@@ -34,3 +34,20 @@ class Matriz:
     
 def Vector(*args):
     return args
+
+v1=Vector(1,0,0)
+v2=Vector(0,1,0)
+v3=Vector(0,0,1)
+matriz= Matriz(v1,v2,v3)
+
+def mf(fila, factor):
+    global matriz
+    matriz.multiplicar_fila(fila,factor)
+
+def cf(fila1, fila2):
+    global matriz
+    matriz.cambiar_filas(fila1, fila2)
+
+def cl(fila1, fila2, factor):
+    global matriz
+    matriz.sumar_multiplo(fila1, fila2, factor)
