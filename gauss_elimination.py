@@ -20,16 +20,19 @@ class Matriz:
     def multiplicar_fila(self, fila, factor):
         fila-=1
         self.M= self.M.elementary_row_op(op="n->kn",row=fila,k=Rational(factor))
+        self.imprimir()
         return self.M
     def cambiar_filas(self, fila1, fila2):
         fila1-=1
         fila2-=1
         self.M= self.M.elementary_row_op(op="n<->m",row1=fila1, row2=fila2)
+        self.imprimir()
         return self.M
     def sumar_multiplo(self, fila1, fila2, factor):
         fila1-=1
         fila2-=1
         self.M= self.M.elementary_row_op(op="n->n+km",row1=fila1, row2=fila2, k=Rational(factor)) 
+        self.imprimir()
         return self.M
     
 def Vector(*args):
