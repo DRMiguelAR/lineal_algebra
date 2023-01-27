@@ -14,24 +14,37 @@ class Matriz:
     def __init__(self, *args):
         if len(args)>1:
             self.M= sympy.Matrix(args)
-        self.imprimir()
+            Matriz.Matriz= sympy.Matrix(args)
     def imprimir(self):
         display(self.M)
+    def __repr__(self):
+        display(self.M)
+        return ""
     def multiplicar_fila(self, fila, factor):
         fila-=1
-        self.M= self.M.elementary_row_op(op="n->kn",row=fila,k=Rational(factor))
+        M=Matriz.Matriz
+        M= M.elementary_row_op(op="n->kn",row=fila,k=Rational(factor))
+        Matriz.Matriz= M
+        self.M= M
         return self.M
     def cambiar_filas(self, fila1, fila2):
         fila1-=1
         fila2-=1
+        M=Matriz.Matriz
         self.M= self.M.elementary_row_op(op="n<->m",row1=fila1, row2=fila2)
+        Matriz.Matriz= M
+        self.M= M
         return self.M
     def sumar_multiplo(self, fila1, fila2, factor):
         fila1-=1
         fila2-=1
-        self.M= self.M.elementary_row_op(op="n->n+km",row1=fila1, row2=fila2, k=Rational(factor)) 
+        M= Matriz.Matriz
+        M= M.elementary_row_op(op="n->n+km",row1=fila1, row2=fila2, k=Rational(factor)) 
+        Matriz.Matriz= M
+        self.M= M
         return self.M
     
+
 def Vector(*args):
     return args
 
@@ -41,16 +54,14 @@ v3=Vector(0,0,1)
 matriz= Matriz(v1,v2,v3)
 
 def mf(fila, factor):
-    global matriz
     matriz.multiplicar_fila(fila,factor)
     matriz.imprimir()
 
 def cf(fila1, fila2):
-    global matriz
     matriz.cambiar_filas(fila1, fila2)
     matriz.imprimir()
 
 def cl(fila1, fila2, factor):
-    global matriz
     matriz.sumar_multiplo(fila1, fila2, factor)
     matriz.imprimir()
+
