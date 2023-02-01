@@ -16,9 +16,9 @@ class Matriz:
             self.M= sympy.Matrix(args)
             Matriz.Matriz= sympy.Matrix(args)
     def imprimir(self):
-        display(self.M)
+        display(Matriz.Matriz)
     def __repr__(self):
-        display(self.M)
+        display(Matriz.Matriz)
         return ""
     def multiplicar_fila(self, fila, factor):
         fila-=1
@@ -31,7 +31,7 @@ class Matriz:
         fila1-=1
         fila2-=1
         M=Matriz.Matriz
-        self.M= self.M.elementary_row_op(op="n<->m",row1=fila1, row2=fila2)
+        M= M.elementary_row_op(op="n<->m",row1=fila1, row2=fila2)
         Matriz.Matriz= M
         self.M= M
         return self.M
